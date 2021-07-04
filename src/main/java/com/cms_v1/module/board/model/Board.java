@@ -6,6 +6,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * 게시판 Entity
+ * @author LeeSeungyoung
+ */
 @Data
 @Entity
 public class Board {
