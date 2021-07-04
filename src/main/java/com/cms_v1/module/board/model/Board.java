@@ -3,8 +3,7 @@ package com.cms_v1.module.board.model;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -12,7 +11,9 @@ import java.util.Date;
 public class Board {
 
     @Id
-    private int boardSeq;
+    @Column(name = "boardNm")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int boardNm;
     private String title;
     private String contents;
     @CreationTimestamp

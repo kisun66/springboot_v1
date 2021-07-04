@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms_v1.module.board.repository.BoardRepository">
+    <select id="getList" parameterType="com.cms_v1.module.board.model.Board" resultType="com.cms_v1.module.board.model.Board">
+        SELECT A.BOARD_NM
+             , A.TITLE
+             , A.CONTENTS
+             , A.REG_DATE
+          FROM BOARD A
+         ORDER BY A.REG_DATE DESC
+    </select>
+
+    <select id="get" parameterType="com.cms_v1.module.board.model.Board" resultType="com.cms_v1.module.board.model.Board">
+        SELECT A.BOARD_NM
+             , A.TITLE
+             , A.CONTENTS
+             , A.REG_DATE
+          FROM BOARD A
+         WHERE A.BOARD_NM = #{BoardNm}
+    </select>
+
+    <insert id="save" parameterType="com.cms_v1.module.board.model.Board">
+        INSERT
+          INTO BOARD
+             (
+               TITLE
+             , CONTENTS
+             , REG_DATE
+             )
+        VALUES
+             (
+               #{title}
+             , #{contents}
+             , NOW()
+             )
+    </insert>
+
+    <update id="update" parameterType="com.cms_v1.module.board.model.Board">
+        UPDATE BOARD
+           SET TITLE = #{title}
+             , CONTENTS = #{contents}
+         WHERE BOARD_NM = #{BoardNm}
+    </update>
+
+    <delete id="delete" parameterType="com.cms_v1.module.board.model.Board">
+        DELETE FROM BOARD
+         WHERE BOARD_NM = #{BoardNm}
+    </delete>
+
+</mapper>
