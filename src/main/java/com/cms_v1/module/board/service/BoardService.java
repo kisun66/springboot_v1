@@ -47,7 +47,6 @@ public class BoardService {
         } else {
             repository.save(param);
         }
-        repository.save(board);
     };
 
     /**
